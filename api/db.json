@@ -1,0 +1,34 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "red tomato",
+      "description": "",
+      "price": 3.5,
+      "category": "vegetables",
+      "subcategories": "tomatoes",
+      "image": "",
+      "comments": []
+    },
+    {
+      "id": 2,
+      "name": "yellow tomato",
+      "description": "",
+      "price": 3.06,
+      "category": "vegetables",
+      "subcategories": "tomatoes",
+      "image": "",
+      "comments": []
+    },
+    {
+      "id": 3,
+      "name": "green tomato",
+      "description": "",
+      "price": 4.74,
+      "category": "vegetables",
+      "subcategories": "tomatoes",
+      "image": "",
+      "comments": []
+    }
+  ]
+}
