@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import Search from "./Search";
 import SortByPrice from "./SortByPrice";
-import {useSearchParams} from "react-router-dom";
+import {Link, useSearchParams} from "react-router-dom";
 
 function Products() {
     const [productList, setProductList] = useState([]);
@@ -12,7 +12,7 @@ function Products() {
     useEffect(() => {
         const  controller  = new AbortController();
         getProducts(controller.signal)
-            .then((data) => setProductList(data));
+            .then(setProductList);
 
         return () => {
             controller.abort()
@@ -69,7 +69,8 @@ function Products() {
                     .sort(handleSortByPrice)
                     .map((product) => (
                         <li key={product.id}>
-                            {product.name} {product.price}
+                            {product.name} {product.price}{' '}
+                            <Link to={`/products/${product.id}`}>details</Link>
                         </li>
                     ))}
             </ul>
