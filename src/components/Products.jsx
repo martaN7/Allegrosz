@@ -5,7 +5,6 @@ function Products(props) {
     const [productList, setProductList] = useState([]);
     const [query, setQuery] = useState('');
 
-
     useEffect(() => {
         const  controller  = new AbortController();
         getProducts(controller.signal)
@@ -16,6 +15,7 @@ function Products(props) {
         };
         
     },[]);
+    
 
     async function getProducts(signal){
         const response = await fetch('/products', {signal});

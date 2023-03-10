@@ -1,13 +1,21 @@
 import {useEffect, useState} from "react";
+import {useSearchParams} from "react-router-dom";
 
 function Search({setQuery}) {
     const [value, setValue] = useState('');
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    useEffect(() => {
+        setValue(searchParams.get('query'));
+    }, []);
 
     useEffect(() => {
         setQuery(value);
-        
+        setSearchParams({
+              query: value,
+        });
     }, [value]);
-
+    
     function handleInput(e){
         setValue(e.target.value);
     }
