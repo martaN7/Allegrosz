@@ -1,11 +1,13 @@
 import {useEffect, useState} from "react";
 import Search from "./Search";
 import SortByPrice from "./SortByPrice";
+import {useSearchParams} from "react-router-dom";
 
-function Products(props) {
+function Products() {
     const [productList, setProductList] = useState([]);
     const [query, setQuery] = useState('');
     const [priceOrder, setPriceOrder] = useState('');
+    const [_, setSearchParams] = useSearchParams();
 
     useEffect(() => {
         const  controller  = new AbortController();
@@ -17,6 +19,8 @@ function Products(props) {
         };
         
     },[]);
+
+    useEffect(handleSearchParams, [query, priceOrder]);
     
 
     async function getProducts(signal){
@@ -35,6 +39,18 @@ function Products(props) {
                 return b.price - a.price;
         }
 
+    }
+
+    function handleSearchParams(){
+        const params = {};
+        if(query !== ''){
+            params.query = query;
+        }
+        if(priceOrder !== ''){
+            params.order = priceOrder;
+        }
+
+        setSearchParams(params);
     }
 
     return (
